@@ -1,18 +1,18 @@
 import React from 'react';
+import headerImg from '../../images/Leader-Score.svg';
 import {
-  HeaderStyled, HeaderTitleStyled, HeaderTextStyled,
+  Header, HeaderTitle, HeaderText,
   HeaderLeftBlock, HeaderRightBlock, HeaderImg,
   HeaderUserBlock, HeaderUserImg, HeaderUserInfo,
   HeaderUsersBlock,
-} from '../Common/Header';
-import headerImg from '../../images/Leader-Score.svg';
+} from '../Common';
 import userImg1 from '../../images/user-1.svg';
 
-export const Header:React.FC = () => (
-  <HeaderStyled>
+export const HeaderEl:React.FC = () => (
+  <Header>
     <HeaderLeftBlock>
-      <HeaderTitleStyled>All-time highest scorers</HeaderTitleStyled>
-      <HeaderTextStyled>You can be among the leaders already today</HeaderTextStyled>
+      <HeaderTitle>All-time highest scorers</HeaderTitle>
+      <HeaderText>You can be among the leaders already today</HeaderText>
       <HeaderUsersBlock>
         <HeaderUserBlock>
           <HeaderUserImg src={userImg1} />
@@ -44,5 +44,5 @@ export const Header:React.FC = () => (
     <HeaderRightBlock>
       <HeaderImg src={headerImg} />
     </HeaderRightBlock>
-  </HeaderStyled>
+  </Header>
 );

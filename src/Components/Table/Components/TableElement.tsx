@@ -3,7 +3,7 @@ import {
   TableElementStyled, TableElementContainer,
   TableElementPosition, TableElementImg, TableElementPoints,
   TableElementName, TableElementPlace, TableElementEdit,
-} from '../../Common/Table';
+} from '../../Common';
 import user1 from '../../../images/user-1.svg';
 import editUser from '../../../images/Edit-User.svg';
 

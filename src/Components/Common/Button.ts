@@ -12,4 +12,3 @@ export const Button = styled.button<IButton>`
     border:0;
     font-family:${(props) => props.theme.fonts.bold}
 `;
-// export const Button:React.FC<IButtonProps > = ({ bgColor, text }) => <StyledButton bgColor={bgColor}>{text}</StyledButton>;

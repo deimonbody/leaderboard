@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export interface ImageProps {
   src:string;
 }
-export const HeaderStyled = styled.div`
+export const Header = styled.div`
     background-color:${(props) => props.theme.colors.mainBlue};
     color:${(props) => props.theme.colors.white};
     border-radius:${(props) => props.theme.borderRadius};
@@ -11,7 +11,7 @@ export const HeaderStyled = styled.div`
     display:flex;
 `;
 
-export const HeaderTitleStyled = styled.p`
+export const HeaderTitle = styled.p`
     font-family:${(props) => props.theme.fonts.bold};
     font-size:1.7rem;
     @media screen and (max-width:992px){
@@ -20,7 +20,7 @@ export const HeaderTitleStyled = styled.p`
     margin-bottom:8px;
 `;
 
-export const HeaderTextStyled = styled.p`
+export const HeaderText = styled.p`
 font-family:${(props) => props.theme.fonts.reg};
     font-size:1.2rem;
     @media screen and (max-width:992px){

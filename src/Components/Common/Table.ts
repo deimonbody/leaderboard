@@ -6,7 +6,7 @@ interface IDayChange {
   color:string;
 }
 
-export const TableStyled = styled.div`
+export const Table = styled.div`
     margin-top:20px;
     border-radius:${(props) => props.theme.borderRadius};
     background-color:${(props) => props.theme.colors.white};

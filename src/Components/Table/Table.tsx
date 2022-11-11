@@ -1,16 +1,16 @@
 import React from 'react';
-import { myTheme } from '../../my-theme';
 import {
-  TableStyled,
+  Table,
   TableFirstLine, TableTitle,
   ControlBlock, ControlBtn,
   TableElements, ControlDay,
   TableElementContainer,
-} from '../Common/Table';
+} from '../Common';
+import { myTheme } from '../../my-theme';
 import { TableElement } from './Components/TableElement';
 
-export const Table:React.FC = () => (
-  <TableStyled>
+export const TableEl:React.FC = () => (
+  <Table>
     <TableFirstLine>
       <TableTitle>Leaders table for this period</TableTitle>
       <ControlBlock>
@@ -26,5 +26,5 @@ export const Table:React.FC = () => (
     <TableElements>
       <TableElement />
     </TableElements>
-  </TableStyled>
+  </Table>
 );
