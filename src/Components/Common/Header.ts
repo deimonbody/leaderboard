@@ -52,30 +52,27 @@ export const HeaderImg = styled.img.attrs<ImageProps>((props) => ({ src: props.s
     left:50%;
     transform:translate(-50%,-50%);
     @media screen and (max-width:1200px){
-        min-height:230px;
+        min-height:213px;
     }
     @media screen and (max-width:992px){
         padding-left:15px;
     }
     @media screen and (min-width:1200px){
-        min-height:290px;
+        min-height:247px;
         top:30%;
     }
 `;
 export const HeaderUserBlock = styled.div`
     display:flex;
     flex-direction:column;
-    &:not(:last-child){
-        padding-right:20px;    
-    }
-    flex-basis:15%;
+    flex-basis:17%;
+    justify-content:center;
+    align-items:center;
+    margin-right:20px;
     @media screen and (max-width:992px){
-        flex-basis:100px;
+        flex-basis:80px;
         flex-grow:0;
         flex-shrink:0;
-        &:not(:last-child){
-            padding-right:0px;    
-        }
     }
 `;
 export const HeaderUserImg = styled.img.attrs<ImageProps>((props) => ({ src: props.src }))`
@@ -84,17 +81,10 @@ export const HeaderUserImg = styled.img.attrs<ImageProps>((props) => ({ src: pro
     object-fit:contain;
      object-position:center;
      box-sizing:border-box;
-     @media screen and (max-width:992px){
-       padding:20px 20px 0 0px;
-    }
- `;
+     `;
 export const HeaderUserInfo = styled.p`
     font-family:${(props) => props.theme.fonts.reg};
-    font-size:1rem;
-    @media screen and (max-width:992px){
-        font-size:.9rem;
-        padding-left:5px;
-    }
+    font-size:.9rem;
 `;
 export const HeaderUsersBlock = styled.div`
     display:flex;

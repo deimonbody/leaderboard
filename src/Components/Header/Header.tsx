@@ -1,4 +1,5 @@
 import React from 'react';
+import { IUser } from '@root/common/interfaces';
 import headerImg from '../../images/Leader-Score.svg';
 import {
   Header, HeaderTitle, HeaderText,
@@ -6,40 +7,25 @@ import {
   HeaderUserBlock, HeaderUserImg, HeaderUserInfo,
   HeaderUsersBlock,
 } from '../Common';
-import userImg1 from '../../images/user-1.svg';
 
-export const HeaderEl:React.FC = () => (
+interface IProps {
+  bestUsers:IUser[]
+}
+
+export const HeaderEl:React.FC<IProps> = ({ bestUsers }) => (
   <Header>
     <HeaderLeftBlock>
       <HeaderTitle>All-time highest scorers</HeaderTitle>
       <HeaderText>You can be among the leaders already today</HeaderText>
       <HeaderUsersBlock>
-        <HeaderUserBlock>
-          <HeaderUserImg src={userImg1} />
-          <HeaderUserInfo>
-            Petr - 12
-          </HeaderUserInfo>
-        </HeaderUserBlock>
-        <HeaderUserBlock>
-          <HeaderUserImg src={userImg1} />
-          <HeaderUserInfo>
-            Petr - 12
-          </HeaderUserInfo>
-        </HeaderUserBlock>
-        <HeaderUserBlock>
-          <HeaderUserImg src={userImg1} />
-          <HeaderUserInfo>
-            Petr - 12
-          </HeaderUserInfo>
-        </HeaderUserBlock>
-        <HeaderUserBlock>
-          <HeaderUserImg src={userImg1} />
-          <HeaderUserInfo>
-            Petr - 12
-          </HeaderUserInfo>
-        </HeaderUserBlock>
+        {bestUsers.map((user, index) => (
+          <HeaderUserBlock key={index}>
+            <HeaderUserImg src={user.src} />
+            <HeaderUserInfo>
+              {user.name} - {user.score}
+            </HeaderUserInfo>
+          </HeaderUserBlock>))}
       </HeaderUsersBlock>
-
     </HeaderLeftBlock>
     <HeaderRightBlock>
       <HeaderImg src={headerImg} />

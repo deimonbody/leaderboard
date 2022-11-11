@@ -42,7 +42,8 @@
         "quote-props":"off",
         "react-hooks/exhaustive-deps":"off",
         "react/no-array-index-key":"off",
-        "no-continue":"off"
+        "no-continue":"off",
+        "consistent-return":"off"
     },
     "settings": {
         "import/resolver": {

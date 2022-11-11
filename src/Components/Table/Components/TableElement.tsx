@@ -1,19 +1,24 @@
 import React from 'react';
+import { IUser } from '@root/common/interfaces';
 import {
   TableElementStyled, TableElementContainer,
   TableElementPosition, TableElementImg, TableElementPoints,
   TableElementName, TableElementPlace, TableElementEdit,
 } from '../../Common';
-import user1 from '../../../images/user-1.svg';
 import editUser from '../../../images/Edit-User.svg';
 
-export const TableElement = () => (
+interface IProps {
+  user:IUser;
+  position:string;
+}
+
+export const TableElement:React.FC<IProps> = ({ user, position }) => (
   <TableElementStyled>
     <TableElementContainer>
-      <TableElementPosition>1rd</TableElementPosition>
-      <TableElementImg src={user1} />
-      <TableElementPoints>12</TableElementPoints>
-      <TableElementName>Peter</TableElementName>
+      <TableElementPosition>{position}</TableElementPosition>
+      <TableElementImg src={user.src} />
+      <TableElementPoints>{user.score}</TableElementPoints>
+      <TableElementName>{user.name}</TableElementName>
     </TableElementContainer>
     <TableElementContainer>
       <TableElementPlace>no changes</TableElementPlace>
