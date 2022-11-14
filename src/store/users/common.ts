@@ -6,11 +6,21 @@ export interface IState {
 }
 export enum UserActions {
   SET_USERS = 'SET_USERS',
+  UPDATE_USER_BY_ID = 'UPDATE_USER_BY_ID',
 }
 
 export interface ISetUsers {
   type:UserActions.SET_USERS
   payload:IUser[]
 }
-
-export type IUserActions = ISetUsers;
+export interface IUpdateUser {
+  type:UserActions.UPDATE_USER_BY_ID,
+  payload:{
+    userId:string;
+    data:{
+      userName:string;
+      score:number
+    }
+  }
+}
+export type IUserActions = ISetUsers | IUpdateUser;

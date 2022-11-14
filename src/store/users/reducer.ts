@@ -14,6 +14,17 @@ export const userReducer = (state = initialState, action:IUserActions):IState =>
         isLoading: false,
       };
     }
+    case UserActions.UPDATE_USER_BY_ID: {
+      const { userName, score } = action.payload.data;
+      const currentUsersCopy = [...state.currentUsers];
+      const findIndex = currentUsersCopy.findIndex((user) => user.id === action.payload.userId);
+      currentUsersCopy[findIndex].name = userName;
+      currentUsersCopy[findIndex].score = score;
+      return {
+        ...state,
+        currentUsers: currentUsersCopy,
+      };
+    }
     default: {
       return state;
     }

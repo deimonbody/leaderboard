@@ -13,9 +13,10 @@ import { getPosition } from '../../helper/user.helper';
 
 interface IProps {
   sortedUsers:IUser[]
+  showPopUpHandler:(userId:string)=>void;
 }
 
-export const TableEl:React.FC<IProps> = ({ sortedUsers }) => (
+export const TableEl:React.FC<IProps> = ({ sortedUsers, showPopUpHandler }) => (
   <Table>
     <TableFirstLine>
       <TableTitle>Leaders table for this period</TableTitle>
@@ -29,7 +30,12 @@ export const TableEl:React.FC<IProps> = ({ sortedUsers }) => (
       </ControlBlock>
     </TableFirstLine>
     <TableElements>
-      {sortedUsers.map((currentUser, index) => <TableElement user={currentUser} key={index} position={getPosition(index + 1)} />)}
+      {sortedUsers.map((currentUser, index) => <TableElement
+        showPopUpHandler={() => { showPopUpHandler(currentUser.id); }}
+        user={currentUser}
+        key={currentUser.id}
+        position={getPosition(index + 1)}
+      />)}
     </TableElements>
   </Table>
 );

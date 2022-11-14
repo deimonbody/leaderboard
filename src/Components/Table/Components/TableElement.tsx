@@ -10,9 +10,10 @@ import editUser from '../../../images/Edit-User.svg';
 interface IProps {
   user:IUser;
   position:string;
+  showPopUpHandler:()=>void;
 }
 
-export const TableElement:React.FC<IProps> = ({ user, position }) => (
+export const TableElement:React.FC<IProps> = ({ user, position, showPopUpHandler }) => (
   <TableElementStyled>
     <TableElementContainer>
       <TableElementPosition>{position}</TableElementPosition>
@@ -22,7 +23,7 @@ export const TableElement:React.FC<IProps> = ({ user, position }) => (
     </TableElementContainer>
     <TableElementContainer>
       <TableElementPlace>no changes</TableElementPlace>
-      <TableElementEdit src={editUser} />
+      <TableElementEdit src={editUser} onClick={showPopUpHandler} />
     </TableElementContainer>
   </TableElementStyled>
 );
