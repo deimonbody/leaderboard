@@ -7,12 +7,22 @@ import { MainTitle, Wrapper } from '../Common';
 import { HeaderEl } from '../Header/Header';
 import { TableEl } from '../Table/Table';
 import { sortUser } from '../../helper/user.helper';
+import { EditUserEl } from '../EditUser/EditUser';
 
 export const App:React.FC = () => {
   const { isLoading, currentUsers } = useAppSelector((store) => store.users);
   const { setUsers } = useUsersActions();
   const [sortedUsers, setSortedUser] = useState<IUser[]>([]);
   const [bestUsers, setBestUsers] = useState<IUser[]>([]);
+  const [isShowPopUp, setIsShowPopUp] = useState(false);
+  const [userEdit, setUserEdit] = useState<IUser | null>(null);
+
+  const showPopUpHandler = (userId:string) => {
+    const currentUser = currentUsers.find((user) => user.id === userId) as IUser;
+    setUserEdit(currentUser);
+    setIsShowPopUp(true);
+  };
+  const closePopUpHandler = () => setIsShowPopUp(false);
   useEffect(() => {
     setUsers();
   }, []);
@@ -35,8 +45,13 @@ export const App:React.FC = () => {
         <Wrapper>
           <MainTitle />
           <HeaderEl bestUsers={bestUsers} />
-          <TableEl sortedUsers={sortedUsers} />
+          <TableEl sortedUsers={sortedUsers} showPopUpHandler={showPopUpHandler} />
         </Wrapper>
+        {userEdit && <EditUserEl
+          closePopUpHandler={closePopUpHandler}
+          isShow={isShowPopUp}
+          user={userEdit}
+        />}
       </ThemeProvider>
     </>
   );

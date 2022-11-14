@@ -16,6 +16,7 @@ declare module 'styled-components' {
       white:string;
       textDarkBlue:string;
       userPostion:string;
+      darkRed:string;
     };
     fonts:{
       medium:string;

@@ -1,8 +1,6 @@
 import styled from 'styled-components';
+import { IButton } from '../../common/interfaces';
 
-interface IButton {
-  bgColor:string
-}
 export const Button = styled.button<IButton>`
     border-radius:${(props) => props.theme.borderRadius};
     color:${(props) => props.theme.colors.white};

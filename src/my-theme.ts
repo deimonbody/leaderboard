@@ -15,6 +15,7 @@ const myTheme: DefaultTheme = {
     white: '#F6F6F6',
     textDarkBlue: '#030327',
     userPostion: '#808080',
+    darkRed: '#B64C41',
   },
   fonts: {
     medium: 'Montserrat-Med',

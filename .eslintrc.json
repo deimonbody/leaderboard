@@ -43,7 +43,10 @@
         "react-hooks/exhaustive-deps":"off",
         "react/no-array-index-key":"off",
         "no-continue":"off",
-        "consistent-return":"off"
+        "consistent-return":"off",
+        "jsx-a11y/no-noninteractive-element-interactions":"off",
+        "intreact/button-has-type":"off",
+        "react/button-has-type":"off"
     },
     "settings": {
         "import/resolver": {

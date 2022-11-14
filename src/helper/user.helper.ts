@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import { INotFulluser, IUser } from '../common/interfaces';
 import user1 from '../images/user-1.svg';
 import user2 from '../images/user-2.svg';
@@ -12,6 +13,7 @@ export const proccesingUserData = (data:INotFulluser[]):IUser[] => data.map((use
   name: user.name,
   score: user.score || 0,
   src: getRandomImg(),
+  id: uuidv4(),
 }));
 
 export const sortUser = (data:IUser[]) => data.sort((a, b) => b.score - a.score);
