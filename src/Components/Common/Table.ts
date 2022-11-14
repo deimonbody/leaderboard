@@ -1,10 +1,6 @@
 import styled from 'styled-components';
+import { ImageProps, IDayChange } from '../../common/interfaces';
 import { Button } from './Button';
-import { ImageProps } from './Header';
-
-interface IDayChange {
-  color:string;
-}
 
 export const Table = styled.div`
     margin-top:20px;

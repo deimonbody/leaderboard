@@ -1,9 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
-interface IWrapper {
-  children:JSX.Element | JSX.Element[]
-}
+import { IWrapper } from '../../common/interfaces';
 
 const StyledWrapper = styled.div`
     box-sizing:border-box;

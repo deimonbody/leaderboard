@@ -1,8 +1,6 @@
 import styled from 'styled-components';
+import { ImageProps } from '../../common/interfaces';
 
-export interface ImageProps {
-  src:string;
-}
 export const Header = styled.div`
     background-color:${(props) => props.theme.colors.mainBlue};
     color:${(props) => props.theme.colors.white};

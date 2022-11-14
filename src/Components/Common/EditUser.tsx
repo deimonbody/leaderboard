@@ -1,15 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Controller, Control } from 'react-hook-form';
-import { IEditUserForm } from '../../common/interfaces';
+import { Controller } from 'react-hook-form';
+import { IEditUserInput } from '../../common/interfaces';
 import bg from '../../images/Edit-User-bg.svg';
-
-interface IEditUserInput {
-  name:'userName' | 'score';
-  control: Control<IEditUserForm> | undefined;
-  placeholder:string;
-  type:string;
-}
 
 export const EditUser = styled.div`
     background-color:#a8a8a882;

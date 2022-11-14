@@ -47,13 +47,11 @@ export const App:React.FC = () => {
           <HeaderEl bestUsers={bestUsers} />
           <TableEl sortedUsers={sortedUsers} showPopUpHandler={showPopUpHandler} />
         </Wrapper>
-        {userEdit
-          ? <EditUserEl
-              closePopUpHandler={closePopUpHandler}
-              isShow={isShowPopUp}
-              user={userEdit}
-          />
-          : null}
+        {userEdit && <EditUserEl
+          closePopUpHandler={closePopUpHandler}
+          isShow={isShowPopUp}
+          user={userEdit}
+        />}
       </ThemeProvider>
     </>
   );
