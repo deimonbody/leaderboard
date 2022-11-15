@@ -1,6 +1,6 @@
 import Joi from 'joi';
 
-export const schema = Joi.object({
+export const userFormSchema = Joi.object({
   userName: Joi.string()
     .min(3)
     .message('The name is too short,min 3 symbols')

@@ -26,6 +26,20 @@ const GlobalStyle = createGlobalStyle`
     margin:0;
     padding:0;
   }
-   `;
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height:8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #F99746;
+    border-radius:20px;
+  }
+`;
 
 export default GlobalStyle;

@@ -46,7 +46,9 @@
         "consistent-return":"off",
         "jsx-a11y/no-noninteractive-element-interactions":"off",
         "intreact/button-has-type":"off",
-        "react/button-has-type":"off"
+        "react/button-has-type":"off",
+        "react-hooks/rules-of-hooks":"off",
+        "@typescript-eslint/no-unused-expressions":"off"
     },
     "settings": {
         "import/resolver": {

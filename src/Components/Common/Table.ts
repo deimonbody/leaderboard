@@ -24,22 +24,31 @@ export const TableTitle = styled.p`
     font-family:${(props) => props.theme.fonts.medium};
     color:${(props) => props.theme.colors.textDarkBlue};
     font-size:1.2rem;
+    @media screen and (max-width:992px){
+        font-size:1rem;
+    }
     @media screen and (max-width:767px){
-        margin-top:10px;
+        margin-bottom:20px;
         align-self:center;
-        order:1;
     }
 `;
 
 export const ControlBlock = styled.div`
     display:flex;
     @media screen and (max-width:767px){
-       align-self:flex-end;
+       align-self:stretch;
+    }
+    @media screen and (max-width:576px){
+        flex-direction:column;
+        align-items:center;
     }
 `;
 
 export const ControlBtn = styled(Button)`
    margin-right:10px;
+   @media screen and (max-width:992px){
+    font-size:.7rem;
+   }
    @media screen and (max-width:767px){
     padding:8px 18px;
    }
@@ -53,8 +62,11 @@ export const TableElementStyled = styled.div`
     background-color:#DBDBDB;
 `;
 export const TableElementContainer = styled.div`
-display:flex;
-align-items:center;
+    display:flex;
+    align-items:center;
+    @media screen and (max-width:576px){
+        margin-bottom:20px;
+    }
 `;
 export const TableElementPosition = styled.p`
     color:${(props) => props.theme.colors.userPostion};
@@ -115,6 +127,17 @@ export const TableElementEdit = styled.img.attrs<ImageProps>((props) => ({ src: 
 `;
 export const ControlDay = styled.div<IDayChange>`
    margin-right:10px;
-   color:${(props) => props.color};
+   color:${(props) => (props.isNotValid ? '#7B7B7B' : props.theme.colors.textDarkBlue)}};
    font-family:${(props) => props.theme.fonts.medium};
+   cursor:pointer;
+   pointer-events: ${(props) => (props.isNotValid ? 'none' : 'auto')}};
+`;
+export const TableData = styled.p`
+    font-size:1rem;
+    margin-right:10px;
+    font-family:${(props) => props.theme.fonts.bold};
+    color:${(props) => props.theme.colors.textDarkBlue};
+    @media screen and (max-width:992px){
+        font-size:.8rem;
+    }
 `;

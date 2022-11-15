@@ -1,47 +1,38 @@
-import { IEditUserForm, IUser } from '@root/common/interfaces';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
+import { IEditUserForm } from '@root/common/interfaces';
 import { useUsersActions } from '../../store/hooks';
-import { Modal } from '../Modal/Modal';
 import { userFormSchema } from '../../common/schemas';
+import { Modal } from '../Modal/Modal';
 
-interface IEditUser {
-  closePopUpHandler:()=>void;
+interface IAddUserProps {
   isShow:boolean;
-  user:IUser;
+  closePopUpHandler:()=>void;
 }
-
-export const EditUserEl:React.FC<IEditUser> = ({
-  closePopUpHandler, isShow, user,
-}) => {
-  const { updateUserById } = useUsersActions();
+export const AddUser:React.FC<IAddUserProps> = ({ isShow, closePopUpHandler }) => {
+  const { addNewUser } = useUsersActions();
   const { control, handleSubmit, reset } = useForm({
     mode: 'onChange',
     defaultValues: {
-      'userName': user.name,
-      'score': user.score,
+      'userName': '',
+      'score': 0,
     },
     resolver: joiResolver(userFormSchema),
   });
-
   const closeHandler = () => {
     const bodyElement = document.body;
     bodyElement.style.overflow = 'scroll';
     closePopUpHandler();
   };
-
-  useEffect(() => {
-    reset({ userName: user.name, score: user.score });
-  }, [user]);
-
   const onSubmit = (data:IEditUserForm) => {
-    updateUserById(user.id, data);
+    addNewUser(data.userName, data.score);
     closeHandler();
   };
+
   return (
     <Modal
-      title="Edit User"
+      title="Add new User"
       control={control}
       isShow={isShow}
       submitHandler={handleSubmit(onSubmit)}
