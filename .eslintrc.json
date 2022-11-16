@@ -48,7 +48,9 @@
         "intreact/button-has-type":"off",
         "react/button-has-type":"off",
         "react-hooks/rules-of-hooks":"off",
-        "@typescript-eslint/no-unused-expressions":"off"
+        "@typescript-eslint/no-unused-expressions":"off",
+        "prefer-promise-reject-errors":"off",
+        "no-param-reassign":"off"
     },
     "settings": {
         "import/resolver": {
