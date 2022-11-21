@@ -63,12 +63,12 @@ export const HeaderImg = styled.img.attrs<ImageProps>((props) => ({ src: props.s
 export const HeaderUserBlock = styled.div`
     display:flex;
     flex-direction:column;
-    flex-basis:18%;
+    flex-basis:22%;
     justify-content:center;
     align-items:center;
-    margin-right:20px;
+    margin-right:10px;
     @media screen and (max-width:992px){
-        flex-basis:85px;
+        flex-basis:100px;
         flex-grow:0;
         flex-shrink:0;
     }
@@ -82,7 +82,7 @@ export const HeaderUserImg = styled.img.attrs<ImageProps>((props) => ({ src: pro
      `;
 export const HeaderUserInfo = styled.p`
     font-family:${(props) => props.theme.fonts.reg};
-    font-size:.9rem;
+    font-size:.8rem;
 `;
 export const HeaderUsersBlock = styled.div`
     display:flex;
