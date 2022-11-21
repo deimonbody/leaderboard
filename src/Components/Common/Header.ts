@@ -46,7 +46,7 @@ export const HeaderImg = styled.img.attrs<ImageProps>((props) => ({ src: props.s
     height:120%;
     object-fit:contain;
     object-position:center;
-    top:40%;
+    top:48%;
     left:50%;
     transform:translate(-50%,-50%);
     @media screen and (max-width:1200px){
@@ -57,18 +57,18 @@ export const HeaderImg = styled.img.attrs<ImageProps>((props) => ({ src: props.s
     }
     @media screen and (min-width:1200px){
         min-height:247px;
-        top:30%;
+        top:45%;
     }
 `;
 export const HeaderUserBlock = styled.div`
     display:flex;
     flex-direction:column;
-    flex-basis:17%;
+    flex-basis:22%;
     justify-content:center;
     align-items:center;
-    margin-right:20px;
+    margin-right:10px;
     @media screen and (max-width:992px){
-        flex-basis:80px;
+        flex-basis:100px;
         flex-grow:0;
         flex-shrink:0;
     }
@@ -82,12 +82,15 @@ export const HeaderUserImg = styled.img.attrs<ImageProps>((props) => ({ src: pro
      `;
 export const HeaderUserInfo = styled.p`
     font-family:${(props) => props.theme.fonts.reg};
-    font-size:.9rem;
+    font-size:.8rem;
 `;
 export const HeaderUsersBlock = styled.div`
     display:flex;
     margin-top:10px;
      @media screen and (max-width:992px){
-        overflow-x:scroll
+        overflow-x:scroll;
+        ::-webkit-scrollbar-track {
+            background:#1B21AC ;
+          }
     }
 `;

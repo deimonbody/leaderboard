@@ -1,16 +1,18 @@
-import axios from 'axios';
-import { IUser } from '../common/interfaces';
+import instance from '../config/axios.config';
+import { GET_USERS_API_PATH, POST_USER_API_PATH } from '../common/urls';
+import { INotFulluser, IUser } from '../common/interfaces';
 import { proccesingUserData } from './user.helper';
 
-export const GET_USERS_API_PATH = 'http://coding-test.cube19.io/frontend/v1/starting-state';
-
 export const getUsers = async ():Promise<IUser[] | undefined> => {
-  try {
-    const response = await axios.get(GET_USERS_API_PATH);
-    if (response.status === 200) {
-      return proccesingUserData(response.data);
-    }
-  } catch {
-    getUsers();
-  }
+  const response = await instance.get(GET_USERS_API_PATH);
+  return proccesingUserData(response.data);
+};
+export const addNewUserAPI = async (userName:string):Promise<INotFulluser | undefined> => {
+  const response = await instance.post(POST_USER_API_PATH, {
+    'username': userName,
+  });
+
+  return {
+    name: response.data['display-name'] as string,
+  };
 };

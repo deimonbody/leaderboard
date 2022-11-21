@@ -4,7 +4,7 @@ import { Controller } from 'react-hook-form';
 import { IEditUserInput } from '../../common/interfaces';
 import bg from '../../images/Edit-User-bg.svg';
 
-export const EditUser = styled.div`
+export const ModalWrapper = styled.div`
     background-color:#a8a8a882;
     position:fixed;
     top:0;

@@ -31,5 +31,5 @@ export interface IWrapper {
   children:JSX.Element | JSX.Element[]
 }
 export interface IDayChange {
-  color:string;
+  isNotValid:boolean;
 }
