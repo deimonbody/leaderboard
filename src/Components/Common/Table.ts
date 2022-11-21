@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ImageProps, IDayChange } from '../../common/interfaces';
+import { ImageProps, IDayChange, IUserPlace } from '../../common/interfaces';
 import { Button } from './Button';
 
 export const Table = styled.div`
@@ -103,9 +103,9 @@ export const TableElementName = styled.p`
     font-size:.9rem;
 
 `;
-export const TableElementPlace = styled.p`
-    color:${(props) => props.theme.colors.orange};
-    font-family:${(props) => props.theme.fonts.medium};
+export const TableElementPlace = styled.p<IUserPlace>`
+    color:${(props) => props.color};
+    font-family:${(props) => props.theme.fonts.bold};
     font-size:.9rem;
     margin-right:8px;
     @media screen and (max-width:767px){

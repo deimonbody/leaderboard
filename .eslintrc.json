@@ -50,7 +50,8 @@
         "react-hooks/rules-of-hooks":"off",
         "@typescript-eslint/no-unused-expressions":"off",
         "prefer-promise-reject-errors":"off",
-        "no-param-reassign":"off"
+        "no-param-reassign":"off",
+        "@typescript-eslint/no-explicit-any":"off"
     },
     "settings": {
         "import/resolver": {

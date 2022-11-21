@@ -1,16 +1,22 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
-import { IEditUserForm } from '@root/common/interfaces';
+import { IEditUserForm, IUser } from '@root/common/interfaces';
+import { toast } from 'react-toastify';
 import { useUsersActions } from '../../store/hooks';
 import { userFormSchema } from '../../common/schemas';
 import { Modal } from '../Modal/Modal';
+import { isUserAlreadyExists } from '../../helper/user.helper';
 
 interface IAddUserProps {
   isShow:boolean;
   closePopUpHandler:()=>void;
+  currentUsers:IUser[];
+  previousDayUsers:IUser[] | null;
 }
-export const AddUser:React.FC<IAddUserProps> = ({ isShow, closePopUpHandler }) => {
+export const AddUser:React.FC<IAddUserProps> = ({
+  isShow, closePopUpHandler, currentUsers, previousDayUsers,
+}) => {
   const { addNewUser } = useUsersActions();
   const { control, handleSubmit, reset } = useForm({
     mode: 'onChange',
@@ -26,8 +32,21 @@ export const AddUser:React.FC<IAddUserProps> = ({ isShow, closePopUpHandler }) =
     closePopUpHandler();
   };
   const onSubmit = (data:IEditUserForm) => {
-    addNewUser(data.userName, data.score);
     closeHandler();
+    if (isUserAlreadyExists(data.userName, currentUsers)) {
+      toast.error('The name already exists', {
+        position: 'top-right',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      });
+      return;
+    }
+    addNewUser(data.userName, data.score, currentUsers, previousDayUsers);
   };
 
   return (

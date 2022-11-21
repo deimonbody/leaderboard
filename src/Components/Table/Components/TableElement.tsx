@@ -3,9 +3,10 @@ import { IUser } from '@root/common/interfaces';
 import {
   TableElementStyled, TableElementContainer,
   TableElementPosition, TableElementImg, TableElementPoints,
-  TableElementName, TableElementPlace, TableElementEdit,
+  TableElementName, TableElementEdit,
 } from '../../Common';
 import editUser from '../../../images/Edit-User.svg';
+import { UserPlace } from './UserPlace';
 
 interface IProps {
   user:IUser;
@@ -22,7 +23,7 @@ export const TableElement:React.FC<IProps> = ({ user, position, showPopUpHandler
       <TableElementName>{user.name}</TableElementName>
     </TableElementContainer>
     <TableElementContainer>
-      <TableElementPlace>no changes</TableElementPlace>
+      <UserPlace status={user.status} />
       <TableElementEdit src={editUser} onClick={showPopUpHandler} />
     </TableElementContainer>
   </TableElementStyled>
