@@ -1,6 +1,7 @@
 import React from 'react';
 import { IUser } from '@root/common/interfaces';
 import dayjs from 'dayjs';
+import { IDay } from '@root/store/users/common';
 import { useUsersActions } from '../../store/hooks';
 import {
   Table,
@@ -17,7 +18,7 @@ import { getPosition } from '../../helper/user.helper';
 interface IProps {
   sortedUsers:IUser[]
   showPopUpHandler:(userId:string)=>void;
-  currentData:string;
+  currentData:IDay;
   daysLength:number;
   currentDay:number;
   showAddUserHandler:()=>void;
@@ -43,7 +44,7 @@ export const TableEl:React.FC<IProps> = ({
         <TableTitle>Leaders table for this period</TableTitle>
         <ControlBlock>
           <TableElementContainer style={{ flexGrow: 1 }}>
-            <TableData>{dayjs(currentData).format('DD-MMMM')}</TableData>
+            <TableData>{dayjs(currentData.dayTime).format('DD-MMMM')}</TableData>
             <ControlDay isNotValid={currentDay - 1 < 0} onClick={prevDay}> {'<<'} </ControlDay>
             <ControlDay isNotValid={currentDay + 1 > daysLength - 1} onClick={nextDay}> {'>>'} </ControlDay>
           </TableElementContainer>

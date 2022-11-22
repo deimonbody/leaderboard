@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import {
-  IDay, IState, IUserActions, UserActions,
+  IState, IUserActions, UserActions,
 } from './common';
 
 const initialState:IState = {
@@ -22,21 +22,9 @@ export const userReducer = (state = initialState, action:IUserActions):IState =>
         isLoading: false,
       };
     }
-    case UserActions.UPDATE_USER_BY_ID: {
-      const { userName, score } = action.payload.data;
+    case UserActions.UPDATE_USERS: {
       const daysCopy = JSON.parse(JSON.stringify(state.days));
-      for (let i = 0; i < daysCopy.length; i += 1) {
-        let isFinished = false;
-        for (let j = 0; j < daysCopy[i].users.length; j += 1) {
-          if (daysCopy[i].users[j].id === action.payload.userId) {
-            daysCopy[i].users[j].name = userName;
-            daysCopy[i].users[j].score = score;
-            isFinished = true;
-            break;
-          }
-        }
-        if (isFinished) break;
-      }
+      daysCopy[state.currentDay].users = action.payload;
       return {
         ...state,
         days: daysCopy,
@@ -62,14 +50,6 @@ export const userReducer = (state = initialState, action:IUserActions):IState =>
       return {
         ...state,
         currentDay: action.payload,
-      };
-    }
-    case UserActions.ADD_NEW_USER: {
-      const daysCopy = JSON.parse(JSON.stringify(state.days)) as IDay[];
-      daysCopy[state.currentDay].users.push(action.payload);
-      return {
-        ...state,
-        days: daysCopy,
       };
     }
     default: {
