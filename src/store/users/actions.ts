@@ -41,7 +41,6 @@ export const addNewUser = (name:string, score:number, users:IUser[], previousDay
   const notFullNewUser = await addNewUserAPI(name) as INotFulluser;
   notFullNewUser.score = score;
   const [fullNewUser] = proccesingUserData([notFullNewUser]);
-
   let newUsers = JSON.parse(JSON.stringify(users));
   newUsers.push(fullNewUser);
   newUsers = mainUsersListProcess(newUsers, previousDayUsers);
