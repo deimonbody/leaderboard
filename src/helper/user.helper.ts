@@ -26,35 +26,37 @@ export const proccesingUserData = (data:INotFulluser[]):IUser[] => sortUser(
 );
 export const getUserPositionChange = (user:IUser, prevDayUsers:IUser[], positionId:number):IUser => {
   const findIndex = prevDayUsers.findIndex((prevDayUser) => prevDayUser.name === user.name);
+  const result = { ...user };
   if (findIndex !== -1) {
     const difference = findIndex - positionId;
-    user.status.isNoData = false;
+    result.status.isNoData = false;
     if (difference > 0) {
-      user.status.places = difference;
-      user.status.isUp = true;
-      user.status.isNoChange = false;
+      result.status.places = difference;
+      result.status.isUp = true;
+      result.status.isNoChange = false;
     }
     if (difference < 0) {
-      user.status.places = difference * -1;
-      user.status.isUp = false;
-      user.status.isNoChange = false;
+      result.status.places = difference * -1;
+      result.status.isUp = false;
+      result.status.isNoChange = false;
     }
     if (difference === 0) {
-      user.status.isNoChange = true;
+      result.status.isNoChange = true;
     }
   } else {
-    user.status.isNoData = true;
+    result.status.isNoData = true;
   }
 
-  return user;
+  return result;
 };
 export const getPosition = (index:number) => (index < 4 ? `${index}rd` : `${index}th`);
 
 export const mainUsersListProcess = (newUsers:IUser[], previousDayUsers:IUser[] | null) => {
-  newUsers = sortUser(newUsers);
+  let result = JSON.parse(JSON.stringify(newUsers)) as IUser[];
+  result = sortUser(result);
   if (previousDayUsers) {
-    newUsers = newUsers.map((user, index) => getUserPositionChange(user, previousDayUsers, index));
+    result = result.map((user, index) => getUserPositionChange(user, previousDayUsers, index));
   }
-  return newUsers;
+  return result;
 };
 export const isUserAlreadyExists = (newUserName:string, currentUsers:IUser[]) => currentUsers.map((user) => user.name).includes(newUserName);

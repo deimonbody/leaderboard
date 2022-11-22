@@ -56,12 +56,13 @@ export const updateUsers = (newUsers:IUser[]) => ({
 });
 export const updateUserById = (userId:string, data:IEditUserForm, users:IUser[], previousDayUsers:IUser[] | null) => {
   let newUsers = JSON.parse(JSON.stringify(users)) as IUser[];
-  newUsers.map((user) => {
+  newUsers = newUsers.map((user) => {
+    const newUser = { ...user };
     if (user.id === userId) {
-      user.name = data.userName;
-      user.score = data.score;
+      newUser.name = data.userName;
+      newUser.score = data.score;
     }
-    return user;
+    return newUser;
   });
   newUsers = mainUsersListProcess(newUsers, previousDayUsers);
   return {
