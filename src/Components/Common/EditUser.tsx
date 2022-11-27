@@ -46,7 +46,7 @@ export const EditUserInputStyled = styled.div`
 margin-top:40px;
 .input{
     border-radius:${(props) => props.theme.borderRadius};
-    background-color:transparent;
+    background-color:${(props) => props.theme.colors.white};
     color:${(props) => props.theme.colors.textDarkBlue};
     border:1px solid ${(props) => props.theme.colors.textDarkBlue};
     font-family:${(props) => props.theme.fonts.medium};

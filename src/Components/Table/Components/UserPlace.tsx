@@ -14,7 +14,7 @@ export const UserPlace:React.FC<IUserPlaceProps> = ({ status }) => {
     return <TableElementPlace color={myTheme.colors.orange}>No Changes</TableElementPlace>;
   }
   if (status.isUp) {
-    return <TableElementPlace color={myTheme.colors.lightBlue}>{status.places} Places</TableElementPlace>;
+    return <TableElementPlace color={myTheme.colors.lightBlue}>{status.places} {status.places === 1 ? 'place' : 'places' }</TableElementPlace>;
   }
-  return <TableElementPlace color={myTheme.colors.darkRed}>{status.places} Places</TableElementPlace>;
+  return <TableElementPlace color={myTheme.colors.darkRed}>{status.places} {status.places === 1 ? 'place' : 'places' }</TableElementPlace>;
 };

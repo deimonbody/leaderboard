@@ -9,7 +9,33 @@ const getRandomImg = () => {
   const images = [user1, user2, user3, user4];
   return images[Math.floor(Math.random() * ((images.length - 1) - 0) + 0)];
 };
-export const sortUser = (data:IUser[]) => data.sort((a, b) => b.score - a.score);
+const sortUsersByAlphabet = (data:IUser[]) => data.sort((a, b) => {
+  const aName = a.name.toLocaleLowerCase();
+  const bName = b.name.toLocaleLowerCase();
+  if (aName < bName) return -1;
+  if (aName > bName) return 1;
+  return 0;
+});
+export const sortUser = (data:IUser[]) => {
+  if (data.length === 1) return data;
+  let users = JSON.parse(JSON.stringify(data)) as IUser[];
+  users = users.sort((a, b) => b.score - a.score);
+  let beforeEnd = null;
+  let countOfElements = 0;
+  for (let i = 0; i < users.length; i += 1) {
+    if (i !== users.length - 1 && users[i].score === users[i + 1].score) {
+      if (beforeEnd === null) beforeEnd = i;
+      countOfElements += 1;
+    } else if (countOfElements) {
+      let equalUsersScore = users.slice(beforeEnd as number, beforeEnd as number + countOfElements + 1);
+      equalUsersScore = sortUsersByAlphabet(equalUsersScore);
+      users.splice(beforeEnd as number, countOfElements + 1, ...equalUsersScore);
+      countOfElements = 0;
+      beforeEnd = null;
+    }
+  }
+  return users;
+};
 export const proccesingUserData = (data:INotFulluser[]):IUser[] => sortUser(
   data.map((user) => ({
     name: user.name,
@@ -19,8 +45,8 @@ export const proccesingUserData = (data:INotFulluser[]):IUser[] => sortUser(
     status: {
       places: null,
       isUp: false,
-      isNoChange: true,
-      isNoData: false,
+      isNoChange: false,
+      isNoData: true,
     },
   })),
 );
